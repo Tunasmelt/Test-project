@@ -20,4 +20,27 @@ final cardValues = <String>[
   'Queen',
   'Jack',
 ];
-void main(List<String> args) {}
+
+class Card {
+  final Suit suit;
+  final String value;
+  const Card(this.suit, this.value);
+
+  @override
+  String toString() {
+    return '"$value of ${suit.name}"';
+  }
+}
+
+void main(List<String> args) {
+  final deck = [];
+  for (var suit in Suit.values) {
+    for (var i in cardValues) {
+      final card = Card(suit, i);
+      deck.add(card);
+      print(card.toString());
+    }
+  }
+  deck.shuffle();
+  print(deck);
+}
