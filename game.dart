@@ -5,7 +5,7 @@ enum Suit {
   hearts,
 }
 
-final cardValues = <String>[
+final cardValues = Set<String>.from([
   'A',
   '2',
   '3',
@@ -19,12 +19,20 @@ final cardValues = <String>[
   'King',
   'Queen',
   'Jack',
-];
+]);
 
 class Card {
   final Suit suit;
   final String value;
   const Card(this.suit, this.value);
+
+  @override
+  bool operator ==(Object other) {
+    if (other is! Card) {
+      return false;
+    }
+    return suit == other.suit && value == other.value;
+  }
 
   @override
   String toString() {
