@@ -32,8 +32,18 @@ class Card {
   }
 }
 
+List<Card> getHand(int handSize, List<Card> deck) {
+  final hand = <Card>[];
+  for (var i = 0; i < handSize; i++) {
+    final lastIndex = deck.length - 1;
+    final card = deck.removeAt(lastIndex);
+    hand.add(card);
+  }
+  return hand;
+}
+
 void main(List<String> args) {
-  final deck = [];
+  final deck = <Card>[];
   for (var suit in Suit.values) {
     for (var i in cardValues) {
       final card = Card(suit, i);
@@ -43,4 +53,7 @@ void main(List<String> args) {
   }
   deck.shuffle();
   print(deck);
+  final hand = getHand(5, deck);
+  print('Hand: $hand');
+  print('Remaining cards in deck: $deck');
 }
