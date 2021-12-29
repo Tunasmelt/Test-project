@@ -1,5 +1,7 @@
 import 'dart:io';
 
+int num = 1;
+
 String? input(String message) {
   stdout.write(message);
   return stdin.readLineSync();
